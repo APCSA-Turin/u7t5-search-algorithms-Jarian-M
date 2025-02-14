@@ -1,3 +1,5 @@
+package com.example.project;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import com.example.project.Binary_Search.*;
