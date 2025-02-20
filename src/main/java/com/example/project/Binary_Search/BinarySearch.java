@@ -6,21 +6,31 @@ public class BinarySearch {
     public static int binarySearch(int[] elements, int target) {
         int leftIdx = 0;  
         int rightIdx = elements.length - 1; 
-
-        while (leftIdx <= rightIdx) {  
-            int middleIdx = leftIdx + (rightIdx - leftIdx) / 2; 
+        int middleIdx = 0;
+        if(elements.length == 0) {
+            return -1;
+        }
+        if(elements.length == 1) {
+            if(elements[0] != target) {
+                return -1;
+            }
+        }
+        while(leftIdx <= rightIdx) {
+            middleIdx = leftIdx + (rightIdx - leftIdx) / 2;
+            if(elements[middleIdx] > target) {
+                rightIdx = middleIdx--;
+            }
+            if (elements[middleIdx] < target) {
+                leftIdx = middleIdx++;
+            }
             if(elements[middleIdx] == target) {
                 return middleIdx;
-            } else if(elements[middleIdx] < target) {
-                rightIdx = middleIdx + 1;
-            } else {
-                leftIdx = middleIdx - 1;
             }
         }
         return -1; // not found
     }
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        binarySearch(nums, 10);
+        int[] nums = {1, 3, 5, 7, 9, 11, 13};
+        System.out.println(binarySearch(nums, 3));
     }
 }

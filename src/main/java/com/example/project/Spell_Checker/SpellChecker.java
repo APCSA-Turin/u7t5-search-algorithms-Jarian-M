@@ -57,9 +57,11 @@ public class SpellChecker {
             int middleIdx = leftIdx + (rightIdx - leftIdx) / 2; 
             if(dictionary.get(middleIdx).compareTo(word) < 0) {
                 leftIdx = middleIdx++;
-            } else if(dictionary.get(middleIdx).compareTo(word) > 0) {
+            }
+            if(dictionary.get(middleIdx).compareTo(word) > 0) {
                 rightIdx = middleIdx--;
-            } else {
+            }
+            if(dictionary.get(middleIdx).compareTo(word) == 0) {
                 return true;
             }
         }
